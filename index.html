@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+    
+      <title>Hangman</title>
+      <meta name="description" content="Hangman game">
+    
+      <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body>
+    <div id="title">
+        <h1>Welcome to Hangman</h1>
+    </div>
+
+    <div id="guess-input">
+        Enter guess:
+
+        <input id="user-guess" name="guess" type="text" value="" onkeydown="enterKeyChange()" autofocus>
+
+        <input id="submit-btn" type="submit" onclick="enterGuess()">
+    </div>
+
+    <div id="reset-btn"><button id="reset-btn" onclick="window.location.reload()">New Game</button></div>
+
+    <p id="show-word"></p>
+
+    <script src="./app.js"></script>
+    </body>
+
+</html>

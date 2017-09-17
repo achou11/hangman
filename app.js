@@ -60,7 +60,7 @@ function enterGuess() {
         console.log('You gotta type something in the damn box.');
         return;
     } ''
-       
+
     alreadyGuessedArray.push(userGuess);
     alreadyGuessed.innerHTML = alreadyGuessedArray.join(' ');
 
@@ -83,7 +83,7 @@ function enterGuess() {
         });
 
         console.log('updated target is ' + blankWord);
-        
+
         showWord.innerHTML = blankWord.join(' ');
     } else if (targetWordList.includes(userGuess) === false) {
         // decrease number of lives by 1
@@ -100,7 +100,7 @@ function enterGuess() {
 
     // User runs out of lives
     if (lives == 0) {
-        document.getElementById('win-lose').innerHTML = 'Game over. You lost';        
+        document.getElementById('win-lose').innerHTML = 'Game over. You lost';
     }
 
 }

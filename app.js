@@ -1,11 +1,7 @@
 // List of words to choose randomly from
 var words = ['happy', 'sadness', 'madness', 'angry', 'tired', 'excited', 'hormonal'];
 
-// Lowercase all words in list
-words = words.map(function(w) {
-    return w.toLowerCase();
-});
-
+words = words.map(v => v.toLowerCase());
 
 // Set number of lives for user
 var livesTag = document.getElementById('num-lives');
@@ -63,7 +59,7 @@ function enterGuess() {
     } else if (userGuess.length == 0) {
         console.log('You gotta type something in the damn box.');
         return;
-    } 
+    } ''
        
     alreadyGuessedArray.push(userGuess);
     alreadyGuessed.innerHTML = alreadyGuessedArray.join(' ');

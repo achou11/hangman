@@ -53,6 +53,9 @@ function enterGuess() {
     if (alreadyGuessedArray.includes(userGuess)) {
         console.log('Already guessed that letter!');
         return;
+    } else if (userGuess.match(/\d+/g)) {
+      console.log('Letters only please.');
+      return
     } else if (userGuess.length > 1) {
         console.log('Please only guess one letter at a time. Thanks!');
         return;
@@ -65,6 +68,7 @@ function enterGuess() {
     alreadyGuessed.innerHTML = alreadyGuessedArray.join(' ');
 
     console.log('Guess is ' + userGuess);
+    console.log(typeof(userGuess));
 
     // Create array containing indices of where guess occurs in letter if it's correct
     var indexArray = [];

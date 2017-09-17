@@ -14,6 +14,10 @@
         <h1>Welcome to Hangman</h1>
     </div>
 
+    <div id="reset-btn"><button id="reset-btn" onclick="window.location.reload()">New Game</button></div>
+
+    <br>
+    
     <div id="guess-input">
         Enter guess:
 
@@ -22,9 +26,12 @@
         <input id="submit-btn" type="submit" onclick="enterGuess()">
     </div>
 
-    <div id="reset-btn"><button id="reset-btn" onclick="window.location.reload()">New Game</button></div>
-
     <p id="show-word"></p>
+
+    <p>Already guessed letters: <span id="already-guessed"></span></p>
+    <p id="lives">Number of lives: <span id="num-lives"></span></p>
+
+    <h3 id="win-lose"></h3>
 
     <script src="./app.js"></script>
     </body>

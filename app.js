@@ -1,6 +1,16 @@
-
-// List of words to choose randomly from */
+// List of words to choose randomly from
 var words = ['happy', 'sadness', 'madness', 'angry', 'tired', 'excited', 'hormonal'];
+
+// Lowercase all words in list
+words = words.map(function(w) {
+    return w.toLowerCase();
+});
+
+
+// Set number of lives for user
+var livesTag = document.getElementById('num-lives');
+var lives = 10;
+livesTag.innerHTML = lives;
 
 
 // Randomly select a word for user to guess from generated array
@@ -22,6 +32,10 @@ var showWord = document.getElementById('show-word');
 showWord.innerHTML = blankWord.join(' ');
 
 
+// Keep track of letters already guessed by user
+var alreadyGuessed = document.getElementById('already-guessed');
+var alreadyGuessedArray = [];
+
 // If enter key is pressed, submit guess;
 // if esc key is pressed, clear input
 function enterKeyChange() {
@@ -35,36 +49,62 @@ function enterKeyChange() {
 
 }
 
-// Where the gameplay happens
+// Where the game play happens
 function enterGuess() {
-    var userGuess = document.getElementById('user-guess').value;
+    var userGuess = document.getElementById('user-guess').value.toLowerCase();
+
+    // Error check user's guess
+    if (alreadyGuessedArray.includes(userGuess)) {
+        console.log('Already guessed that letter!');
+        return;
+    } else if (userGuess.length > 1) {
+        console.log('Please only guess one letter at a time. Thanks!');
+        return;
+    } else if (userGuess.length == 0) {
+        console.log('You gotta type something in the damn box.');
+        return;
+    } 
+       
+    alreadyGuessedArray.push(userGuess);
+    alreadyGuessed.innerHTML = alreadyGuessedArray.join(' ');
+
     console.log('Guess is ' + userGuess);
 
     // Create array containing indices of where guess occurs in letter if it's correct
     var indexArray = [];
     if (targetWordList.includes(userGuess)) {
+        console.log('Already guessed letters: ' + alreadyGuessedArray);
+
         targetWordList.forEach(function(element, index) {
             if (element === userGuess) {
                 indexArray.push(index);
             }
         });
 
-        
-        console.log('Index array is ' + indexArray);
-
         // Replace all occurrences of guessed letter into displayed word and redisplay to user
         indexArray.forEach(function(idx) {
-            console.log(idx);
             blankWord.splice(idx, 1, targetWordList[idx]);
         });
 
         console.log('updated target is ' + blankWord);
         
         showWord.innerHTML = blankWord.join(' ');
-    } 
-    // If guess is incorrect
-    else if (targetWordList.includes(userGuess) === false) {
-        console.log('Incorrect guess. Try again!');
+    } else if (targetWordList.includes(userGuess) === false) {
+        // decrease number of lives by 1
+        lives--;
+        livesTag.innerHTML = lives;
+        console.log('Lives remaining: ' + lives);
+        console.log('Incorrect guess. Try again!');  // if guess is incorrect
     }
-    
+
+    // User correctly guesses all letters in word
+    if (blankWord.join('') === targetWord) {
+        document.getElementById('win-lose').innerHTML = 'Congrats. You won!';
+    }
+
+    // User runs out of lives
+    if (lives == 0) {
+        document.getElementById('win-lose').innerHTML = 'Game over. You lost';        
+    }
+
 }

@@ -31,10 +31,8 @@
 
 }
 
-.logout-text:hover{
-  font-weight: bold;
-}
 
 a:hover {
+    font-weight:bold;
     text-decoration: none !important;
 }

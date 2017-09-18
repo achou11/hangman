@@ -1,14 +1,13 @@
 .game{
-  display: inline-block;
-  vertical-align: top;
+  float:left;
   position: relative;
   width: 40%;
   margin: 50px;
   background: none;
+  padding-left: 100px;
 }
 .leaderboard{
-  display: inline-block;
-  vertical-align: top;
+  float:right;
   width: 40%;
   margin: 50px;
   background: none;
@@ -18,6 +17,7 @@
   width: 100%;
   height: auto;
   border: 3px solid white;
+  font-size: 16px;
 }
 
 .leaders th{

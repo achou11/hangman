@@ -1,14 +1,86 @@
 .users{
-  position: absolute;
-  top: 100px;
-  width: auto;
+  display: block;
+  position: relative;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+  margin-bottom: 150px;
+  background: none;
+}
+
+.admins{
+  display: block;
+  position: relative;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+  margin-bottom: 150px;
+  background: none;
+}
+
+#table-scroll {
+  height:500px;
+  overflow:auto;
+  border: 3px solid white;
+}
+
+.userlog{
+
+  font-size: 16px;
+  width: 100%;
+  
+}
+
+.adminlog{
   height: auto;
-  margin:25px;
-  float: left;
+  border: 3px solid white;
+  font-size: 16px;
+  width: 100%;
+  
+}
+
+.userlog th{
+    text-align: left;
+    padding: 15px;
+    margin: 15px;
+}
+.userlog td{
+    text-align: left;
+    padding: 15px;
+    margin: 15px;
+}
+
+.userlog tr{
+  line-height: 25px;
+}
+.userlog th {
+    color: white;
+}
+
+
+.adminlog th{
+    text-align: left;
+    padding: 15px;
+    margin: 15px;
+}
+.adminlog td{
+    text-align: left;
+    padding: 15px;
+    margin: 15px;
+}
+
+.adminlog tr{
+  line-height: 25px;
+}
+.adminlog th {
+    color: white;
 }
 
 .upload-image{
-  position: absolute;
-  top: 300px;
-  right: 40px;
+  display: block;
+  width: 40%;
+  margin: 50px;
+  background: none;
 }

@@ -45,6 +45,10 @@ function enterKeyChange() {
 
 }
 
+// Create scene variables to update the graphics
+var sceneNumInt = 1;
+var sceneNumStr = 'scene' + sceneNumInt;
+
 // Where the game play happens
 function enterGuess() {
     var userGuess = document.getElementById('user-guess').value.toLowerCase();
@@ -93,6 +97,14 @@ function enterGuess() {
         // decrease number of lives by 1
         lives--;
         livesTag.innerHTML = lives;
+        
+        // Update the canvas
+        // When sceneNumInt exceeds 10, the player has lost
+        sceneNumInt += 1;
+        sceneNumStr = 'hangman' + sceneNumInt;
+        newSource = "uploads/" + sceneNumStr + ".png";
+        document.getElementById('scene').src=newSource;
+        
         console.log('Lives remaining: ' + lives);
         console.log('Incorrect guess. Try again!');  // if guess is incorrect
     }

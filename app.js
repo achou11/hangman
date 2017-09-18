@@ -9,6 +9,7 @@ var sceneNumInt = 1;
 var sceneNumStr = 'scene' + sceneNumInt;
 
 
+
 // Set number of lives for user
 var livesTag = document.getElementById('num-lives');
 var lives = 10;
@@ -68,29 +69,16 @@ function changeScore(status) {
     var scoreValue = parseInt(scoreTag.innerHTML);
 
     if (status) {
-        console.log('Adding 1 to score');
         scoreValue++;
     } else {
-        console.log('Removing 1 from score');
         scoreValue--;
     }
 
     scoreTag.innerHTML = scoreValue;
-    console.log(scoreValue);
-    console.log(typeof(scoreValue));
+    //console.log(typeof(scoreValue));
     return scoreValue.toString();
 }
 
-
-// Function to update user
-function updateUserScore(value) {
-    console.log(value);
-    console.log(typeof(value));
-    var request = new XMLHttpRequest();
-    request.open("POST", "updateScore.php?q=" + value);
-    console.log("Request sent!");
-    request.send();
-}
 
 
 // Where the game play happens after user guesses
@@ -111,7 +99,7 @@ function enterGuess() {
     } else if (!userGuess.match(/[a-z]/)) {
         showInputMessage('Letters only please');
         return;
-    } 
+    }
 
     // If user's input is valid, remove last invalid input message
     showInputMessage('');
@@ -161,8 +149,8 @@ function enterGuess() {
         document.getElementById('win-lose').innerHTML = 'Congrats. You won!';
         var newScoreWin = changeScore(true);
         updateUserScore(newScoreWin);
-    }
 
+    }
     // User runs out of lives
     if (lives == 0) {
         document.getElementById('win-lose').innerHTML = 'Game over. You lost';
@@ -171,3 +159,4 @@ function enterGuess() {
     }
 
 }
+

@@ -32,7 +32,15 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <title>Welcome <?php echo $userRow['userEmail']; ?>!</title>
 <link rel="stylesheet" href="css/master.css" type="text/css"  />
-
+<script>
+  function updateUserScore(value) {
+    var request = new XMLHttpRequest();
+    var user_id = "<?php echo $userRow['userId']; ?>";
+    request.open("POST", "updateScore.php?q="+value+"&id="+user_id);
+    console.log("Request sent!");
+    request.send();
+}
+</script>
 </head>
 
 
@@ -53,6 +61,8 @@
   </div>
 
   <div class = "game">
+    
+    <p id="show-score">0</p>
     <p class="image-background">
     <img src="uploads/hangman1.png" id="scene" style="width:300px; height:150;"/>
     </p>
@@ -79,8 +89,8 @@
     <h3 id="win-lose"></h3>
     
     <div id="reset"><button id="reset-btn" onclick="window.location.reload()">New Game</button></div>
+    <script src="app.js" type="text/javascript"></script>
 
-    <script src="app.js"></script>
   </div>
   
   <div class = "leaderboard">

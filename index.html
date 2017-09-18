@@ -7,7 +7,7 @@
       <meta name="description" content="Hangman game">
 
       <link type="text/css" rel="stylesheet" href="./css/style.css">
-      
+      <link type="text/css" rel="stylesheet" href="./css/master.css">
     </head>
 
     <body>
@@ -15,13 +15,15 @@
         <h1>Welcome to Hangman</h1>
     </div>
     
-    <p class = "image-background">
-    <img src = "uploads/hangman1.png" id = "scene" style="width:300px; height:150;"/>
+    <p class="image-background">
+    <img src="uploads/hangman1.png" id="scene" style="width:300px; height:150;"/>
     </p>
 
-    <div id="reset"><button id="reset-btn" onclick="window.location.reload()">New Game</button></div>
-
     <br>
+
+    <p>Already guessed letters: <span id="already-guessed"></span></p>
+
+    <p id="lives">Number of lives: <span id="num-lives"></span></p>
 
     <div id="guess-input">
         Enter guess:
@@ -29,14 +31,17 @@
         <input id="user-guess" name="guess" type="text" value="" onkeydown="enterKeyChange()" autofocus>
 
         <input id="submit-btn" type="submit" onclick="enterGuess()">
+
     </div>
+
+    <p id="input-error"></p>
 
     <p id="show-word"></p>
 
-    <p>Already guessed letters: <span id="already-guessed"></span></p>
-    <p id="lives">Number of lives: <span id="num-lives"></span></p>
-
     <h3 id="win-lose"></h3>
+    
+    <div id="reset"><button id="reset-btn" onclick="window.location.reload()">New Game</button></div>
+    
 
     <script type="text/javascript" src="./app.js"></script>
     </body>

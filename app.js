@@ -3,6 +3,12 @@ var words = ['happy', 'sadness', 'madness', 'angry', 'tired', 'excited', 'hormon
 
 words = words.map(v => v.toLowerCase());
 
+
+// Create scene variables to update the graphics
+var sceneNumInt = 1;
+var sceneNumStr = 'scene' + sceneNumInt;
+
+
 // Set number of lives for user
 var livesTag = document.getElementById('num-lives');
 var lives = 10;
@@ -45,28 +51,38 @@ function enterKeyChange() {
 
 }
 
-// Create scene variables to update the graphics
-var sceneNumInt = 1;
-var sceneNumStr = 'scene' + sceneNumInt;
+// Show input error message
+function showInputMessage(message) {
+    var inputError = document.getElementById('input-error');
+    if (message === '') {
+        inputError.innerHTML = '';
+    } else {
+        inputError.innerHTML = '(' + message + '...)';
+    }
+}
 
-// Where the game play happens
+// Where the game play happens after user guesses
 function enterGuess() {
     var userGuess = document.getElementById('user-guess').value.toLowerCase();
 
+    document.getElementById('user-guess').value = '';
     // Error check user's guess
     if (alreadyGuessedArray.includes(userGuess)) {
-        console.log('Already guessed that letter!');
+        showInputMessage('Already guessed that letter');
         return;
-    } else if (userGuess.match(/\d+/g)) {
-        console.log('Letters only please.');
-        return
     } else if (userGuess.length > 1) {
-        console.log('Please only guess one letter at a time. Thanks!');
+        showInputMessage('Please only guess one letter at a time');
         return;
     } else if (userGuess.length == 0) {
-        console.log('You gotta type something in the damn box.');
+        showInputMessage('You gotta type something in the damn box');
         return;
-    } ''
+    } else if (!userGuess.match(/[a-z]/)) {
+        showInputMessage('Letters only please');
+        return;
+    } 
+
+    // If user's input is valid, remove last invalid input message
+    showInputMessage('');
 
     alreadyGuessedArray.push(userGuess);
     alreadyGuessed.innerHTML = alreadyGuessedArray.join(' ');

@@ -1,6 +1,7 @@
 
-
-
+p.image-background{
+  background-image: url("../uploads/background.jpg");
+}
 
 #show-word {
     font-family: "Times New Roman", Times, serif;

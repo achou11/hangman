@@ -153,7 +153,7 @@ function enterGuess() {
     }
     // User runs out of lives
     if (lives == 0) {
-        document.getElementById('win-lose').innerHTML = 'Game over. You lost';
+        document.getElementById('win-lose').innerHTML = 'Game over. You lost. But at least you got away :)';
         var newScoreLose = changeScore(false);
         updateUserScore(newScoreLose);
     }

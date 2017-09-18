@@ -26,36 +26,52 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Welcome <?php echo $userRow['userEmail']; ?>!</title>
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"  />
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/master.css" type="text/css"  />
 </head>
 
 <body>
   <div class = "menu">
-    <div class = "logout-block"><a href="logout.php?logout">Sign Out</a></div>
-    <div class = "user-block"><?php echo $userRow['userEmail']; ?></div>
+
+    <div class = "user-block">
+      <div class = "user-text">
+        Welcome <?php echo $userRow['userFirstName']; ?>!
+      </div>
+      <a href="logout.php?logout">
+        <div class = "logout-block">
+          <div class = "logout-text">Sign Out</div>
+        </div>
+      </a>
+    </div>
 
   </div>
   
   <div class = "game">
     
+    <div id="reset"><button id="reset-btn" onclick="window.location.reload()">New Game</button></div>
+
+    <br>
+
     <div id="guess-input">
         Enter guess:
 
         <input id="user-guess" name="guess" type="text" value="" onkeydown="enterKeyChange()" autofocus>
-  
+
         <input id="submit-btn" type="submit" onclick="enterGuess()">
     </div>
 
-    <div id="reset-btn"><button id="reset-btn" onclick="window.location.reload()">New Game</button></div>
-
     <p id="show-word"></p>
+
+    <p>Already guessed letters: <span id="already-guessed"></span></p>
+    <p id="lives">Number of lives: <span id="num-lives"></span></p>
+
+    <h3 id="win-lose"></h3>
+
 
     <script src="app.js"></script>
   </div>
   
   <div class = "leaderboard">
-    <table>
+    <table class = "leaders">
       <tr>
         <th>Rank</th>
         <th>First Name</th>

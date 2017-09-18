@@ -215,7 +215,7 @@
 <title>Tutor signup</title>
 
 <link href="css/form.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/master.css" rel="stylesheet" type="text/css" media="all" />
 
 
 </head>

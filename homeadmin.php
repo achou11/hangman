@@ -30,14 +30,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Welcome Administrator!</title>
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"  />
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/master.css" type="text/css"  />
 </head>
 
 <body>
   <div class = "menu">
-    <div class = "logout-block"><a href="logout.php?logout">Sign Out</a></div>
-    <div class = "user-block"><?php echo $userRow['userEmail']; ?></div>
+
+    <div class = "user-block">
+      <div class = "user-text">
+        Welcome <?php echo $userRow['userFirstName']; ?>!
+      </div>
+      <a href="logout.php?logout">
+        <div class = "logout-block">
+          <div class = "logout-text">Sign Out</div>
+        </div>
+      </a>
+    </div>
+
   </div>
   <div class = "users">
     <?php

@@ -68,19 +68,24 @@ function changeScore(status) {
     var scoreValue = parseInt(scoreTag.innerHTML);
 
     if (status) {
+        console.log('Adding 1 to score');
         scoreValue++;
     } else {
+        console.log('Removing 1 from score');
         scoreValue--;
     }
 
     scoreTag.innerHTML = scoreValue;
+    console.log(scoreValue);
     console.log(typeof(scoreValue));
-    return toString(scoreValue);
+    return scoreValue.toString();
 }
 
 
 // Function to update user
 function updateUserScore(value) {
+    console.log(value);
+    console.log(typeof(value));
     var request = new XMLHttpRequest();
     request.open("POST", "updateScore.php?q=" + value);
     console.log("Request sent!");

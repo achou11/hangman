@@ -38,6 +38,7 @@ showWord.innerHTML = blankWord.join(' ');
 var alreadyGuessed = document.getElementById('already-guessed');
 var alreadyGuessedArray = [];
 
+
 // If enter key is pressed, submit guess;
 // if esc key is pressed, clear input
 function enterKeyChange() {
@@ -60,6 +61,32 @@ function showInputMessage(message) {
         inputError.innerHTML = '(' + message + '...)';
     }
 }
+
+// Add 1 to score if user wins
+function changeScore(status) {
+    var scoreTag = document.getElementById("show-score");
+    var scoreValue = parseInt(scoreTag.innerHTML);
+
+    if (status) {
+        scoreValue++;
+    } else {
+        scoreValue--;
+    }
+
+    scoreTag.innerHTML = scoreValue;
+    console.log(typeof(scoreValue));
+    return toString(scoreValue);
+}
+
+
+// Function to update user
+function updateUserScore(value) {
+    var request = new XMLHttpRequest();
+    request.open("POST", "updateScore.php?q=" + value);
+    console.log("Request sent!");
+    request.send();
+}
+
 
 // Where the game play happens after user guesses
 function enterGuess() {
@@ -88,7 +115,6 @@ function enterGuess() {
     alreadyGuessed.innerHTML = alreadyGuessedArray.join(' ');
 
     console.log('Guess is ' + userGuess);
-    console.log(typeof(userGuess));
 
     // Create array containing indices of where guess occurs in letter if it's correct
     var indexArray = [];
@@ -119,7 +145,7 @@ function enterGuess() {
         sceneNumInt += 1;
         sceneNumStr = 'hangman' + sceneNumInt;
         newSource = "uploads/" + sceneNumStr + ".png";
-        document.getElementById('scene').src=newSource;
+        document.getElementById('scene').src = newSource;
         
         console.log('Lives remaining: ' + lives);
         console.log('Incorrect guess. Try again!');  // if guess is incorrect
@@ -128,11 +154,15 @@ function enterGuess() {
     // User correctly guesses all letters in word
     if (blankWord.join('') === targetWord) {
         document.getElementById('win-lose').innerHTML = 'Congrats. You won!';
+        var newScoreWin = changeScore(true);
+        updateUserScore(newScoreWin);
     }
 
     // User runs out of lives
     if (lives == 0) {
         document.getElementById('win-lose').innerHTML = 'Game over. You lost';
+        var newScoreLose = changeScore(false);
+        updateUserScore(newScoreLose);
     }
 
 }

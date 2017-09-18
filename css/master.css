@@ -1,0 +1,10 @@
+@import url("user.css");
+@import url("style.css");
+@import url("admin.css");
+@import url("menu.css");
+@import url("bootstrap.min.css");
+
+html *
+{
+   font-family: "Comic Sans MS", cursive, sans-serif !important;
+}

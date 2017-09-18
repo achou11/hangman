@@ -1,0 +1,40 @@
+.game{
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  width: 40%;
+  margin: 50px;
+  background: none;
+}
+.leaderboard{
+  display: inline-block;
+  vertical-align: top;
+  width: 40%;
+  margin: 50px;
+  background: none;
+}
+
+.leaders{
+  width: 100%;
+  height: auto;
+  border-collapse: collapse;
+}
+
+.leaders th{
+    text-align: left;
+    padding: 15px;
+}
+.leaders td{
+    text-align: left;
+    padding: 15px;
+}
+
+.leaders tr{
+  line-height: 25px;
+}
+.leaders tr:nth-child(even){background-color: #f2f2f2}
+
+.leaders th {
+    background-color: #4CAF50;
+    color: white;
+}

@@ -31,22 +31,25 @@
 
 <body>
   <div class = "menu">
-
-    <div class = "user-block">
-      <div class = "user-text">
-        Welcome <?php echo $userRow['userFirstName']; ?>!
-      </div>
-      <a href="logout.php?logout">
-        <div class = "logout-block">
-          <div class = "logout-text">Sign Out</div>
-        </div>
-      </a>
+    
+    <div class = "logout-block">
+        <div class = "logout-text"><a href="logout.php?logout">Sign Out</a></div>
     </div>
+    
+    <div class = "user-block">
+      <div class = "user-text">Welcome <?php echo $userRow['userFirstName']; ?>!</div>
+    </div>
+      
+
+
 
   </div>
   
   <div class = "game">
-    
+    <p class = "image-background">
+    <img src = "uploads/hangman1.png" id = "scene" style="width:300px;"/>
+    </p>
+
     <div id="reset"><button id="reset-btn" onclick="window.location.reload()">New Game</button></div>
 
     <br>
@@ -71,6 +74,8 @@
   </div>
   
   <div class = "leaderboard">
+    <div style = "text-align: center; font-size: 30px;">LEADERBOARD</div>
+
     <table class = "leaders">
       <tr>
         <th>Rank</th>

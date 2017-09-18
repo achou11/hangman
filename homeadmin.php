@@ -35,18 +35,14 @@
 
 <body>
   <div class = "menu">
-
-    <div class = "user-block">
-      <div class = "user-text">
-        Welcome <?php echo $userRow['userFirstName']; ?>!
-      </div>
-      <a href="logout.php?logout">
-        <div class = "logout-block">
-          <div class = "logout-text">Sign Out</div>
-        </div>
-      </a>
+    
+    <div class = "logout-block">
+        <div class = "logout-text"><a href="logout.php?logout">Sign Out</a></div>
     </div>
-
+    
+    <div class = "user-block">
+      <div class = "user-text">Welcome <?php echo $userRow['userFirstName']; ?>!</div>
+    </div>
   </div>
   <div class = "users">
     <?php

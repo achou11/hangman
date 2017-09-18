@@ -212,7 +212,7 @@
 
 <head>
 
-<title>Tutor signup</title>
+<title>Hangman</title>
 
 <link href="css/form.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/master.css" rel="stylesheet" type="text/css" media="all" />
@@ -228,16 +228,16 @@ function showForm(a)
 	{
 //		document.getElementById("signupForm").style.display="none";
 //		document.getElementById("loginForm").style.display="block";
-		document.getElementById("signupLink").style.color = "#8B008B";
-		document.getElementById("loginLink").style.color = "#333A56";
+		document.getElementById("signupLink").style.textDecoration = "none";
+		document.getElementById("loginLink").style.textDecoration = "underline";
 //		document.getElementById("navBar").className = "Two";
 	}
     else
 	{
 //		document.getElementById("signupForm").style.display="block";
 //		document.getElementById("loginForm").style.display="none";
-		document.getElementById("signupLink").style.color = "#333A56";
-		document.getElementById("loginLink").style.color = "#8B008B";
+		document.getElementById("signupLink").style.textDecoration = "underline";
+		document.getElementById("loginLink").style.textDecoration = "none";
 //		document.getElementById("navBar").className = "One";
 	}
 	
@@ -251,14 +251,14 @@ function()
 	if(window.location.href.indexOf("loginForm") > -1) {
 		document.getElementById("loginForm").style.display="block";
 		document.getElementById("signupForm").style.display="none";
-		document.getElementById("signupLink").style.color = "#333A56";
-		document.getElementById("loginLink").style.color = "#8B008B";
+		document.getElementById("signupLink").style.textDecoration = "none";
+		document.getElementById("loginLink").style.textDecoration = "underline";
 	}
 	else{
 		document.getElementById("signupForm").style.display="block";
 		document.getElementById("loginForm").style.display="none";
-		document.getElementById("signupLink").style.color = "#8B008B";
-		document.getElementById("loginLink").style.color = "#333A56";
+		document.getElementById("signupLink").style.textDecoration = "underline";
+		document.getElementById("loginLink").style.textDecoration = "none";
 	}
 }, 10);
 
@@ -276,6 +276,9 @@ function()
 	-->
 	<div class = "signSloganContainer">
 		Hangman
+		<br>
+		<br>
+		<div style = "font-size: 18px;">The world's first sadistic word game.</div>
 	</div>
 	<div class="signNavContainer">
 	  <ul>
@@ -303,19 +306,12 @@ function()
 				if ( isset($errMSG) ) {
 					
 					?>
+					<br>
+					<br>
 					<span class="text-danger"></span> <?php echo $errMSG; ?>
 					<?php
 				}
 				?>
-			<!--
-			
-			<label for="country">Country</label>
-			<select id="country" name="country">
-			  <option value="australia">Australia</option>
-			  <option value="canada">Canada</option>
-			  <option value="usa">USA</option>
-			</select>
-			-->
 
 				<input type="submit" name="btn-signup" value="Sign up">
 		
@@ -327,11 +323,13 @@ function()
 			<form name = "loginForm" method="post" action="index.php#loginForm" autocomplete="off">
 				<input type="text" name="logEmail" placeholder="<?php echo $logEmailError; ?>" value="<?php echo $logEmail ?>" maxlength="40" />
 				<input type="password" name="logPass" placeholder="<?php echo $logPassError; ?>" maxlength="15" />
-		
+					<br>
+					<br>
 				<?php
 				if ( isset($logErrMSG) ) {
 					
 					?>
+
 					<span class="text-danger"><?php echo $logErrMSG; ?></span>
 	  
 					<?php

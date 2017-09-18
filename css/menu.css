@@ -8,42 +8,33 @@
   overflow:hidden;
 }
 .user-block{
-  position: relative;
   background: none;
   float: right;
-  margin-top: 25px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right:100px;
-  border: none;
-
-}
-.user-block:hover
-{
-  cursor:pointer;
-}
-.user-block:hover .logout-block {
-  opacity: 1;
-}
-.user-text{
-  font-size: 18px;
-  color:black;
+  margin:25px;
 }
 .logout-block{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: white;
+  background: none;
+  float: right;
+  margin:25px;
 }
+
+.user-text{
+  font-size: 18px;
+  color:white;
+}
+
 
 .logout-text {
   text-align: center;
-  color: black;
+  color: white;
   font-size: 18px;
+
+}
+
+.logout-text:hover{
+  font-weight: bold;
+}
+
+a:hover {
+    text-decoration: none !important;
 }

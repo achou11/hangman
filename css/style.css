@@ -1,6 +1,7 @@
 
 p.image-background{
-  background-image: url("../uploads/background.jpg");
+  background: none;
+  /*background-image: url("../uploads/background.jpg"), url("../uploads/background.png");*/
 }
 
 #show-word {

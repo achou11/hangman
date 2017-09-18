@@ -17,7 +17,7 @@
 .leaders{
   width: 100%;
   height: auto;
-  border-collapse: collapse;
+  border: 3px solid white;
 }
 
 .leaders th{
@@ -32,9 +32,6 @@
 .leaders tr{
   line-height: 25px;
 }
-.leaders tr:nth-child(even){background-color: #f2f2f2}
-
 .leaders th {
-    background-color: #4CAF50;
     color: white;
 }

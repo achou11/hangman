@@ -4,7 +4,15 @@
 @import url("menu.css");
 @import url("bootstrap.min.css");
 
+@font-face {
+	font-family: chalk;
+	src: url('chalk.ttf');
+}
+
 html *
 {
-   font-family: "Comic Sans MS", cursive, sans-serif !important;
+   font-family: chalk !important;
+   color: white !important;
+   background: #383838;
 }
+

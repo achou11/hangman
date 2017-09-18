@@ -19,8 +19,7 @@
 //#################### Sign Up ERRORS #######################
 //###########################################################
 
-	$fnameError = "First name";
-	$lnameError = "Last name";
+	$userError = "Username";
 	$emailError = "Email";
 	$passError = "Password";
 	$passError2 = "Re-enter Password";
@@ -31,14 +30,10 @@
 		// clean user inputs to prevent sql injections
 		
 		
-		$fname = trim($_POST['firstname']);
-		$fname = strip_tags($fname);
-		$fname = htmlspecialchars($fname);
-		
-		$lname = trim($_POST['lastname']);
-		$lname = strip_tags($lname);
-		$lname = htmlspecialchars($lname);
-		
+		$username = trim($_POST['username']);
+		$username = strip_tags($username);
+		$username = htmlspecialchars($username);
+
 		
 		$email = trim($_POST['email']);
 		$email = strip_tags($email);
@@ -59,27 +54,24 @@
 		
 		// basic name validation
 
-		if (empty($fname)) {
-			$error = true;
-			$fnameError = "Please enter your full first name.";
-		} else if (strlen($fname) < 2) {
-			$error = true;
-			$fnameError = "First name must have at least 2 characters.";
-		} else if (!preg_match("/^[a-zA-Z ]+$/",$fname)) {
-			$error = true;
-			$fnameError = "Name must contain alphabets and space.";
-		}
 
-
-		if (empty($lname)) {
+		if (empty($username)) {
 			$error = true;
-			$lnameError = "Please enter your full last name.";
-		} else if (strlen($lname) < 2) {
+			$userError = "Please enter a username";
+		} else if (!preg_match("/^[a-zA-Z0-9 ]+$/",$username)) {
 			$error = true;
-			$lnameError = "Last name must have at least 2 characters.";
-		} else if (!preg_match("/^[a-zA-Z ]+$/",$lname)) {
-			$error = true;
-			$lnameError = "Name must contain alphabets and space.";
+			unset($username);
+			$userError = "No special characters";
+		}	else {
+			// check email exist or not
+			$query = "SELECT userName FROM users WHERE userName='$username'";
+			$result = mysqli_query($conn, $query);
+			$count = mysqli_num_rows($result);
+			if($count!=0){
+				$error = true;
+				unset($username);
+				$userError = "Username taken";
+			}
 		}
 		// basic age validation
 		
@@ -96,6 +88,7 @@
 			$count = mysqli_num_rows($result);
 			if($count!=0){
 				$error = true;
+				unset($email);
 				$emailError = "Provided Email is already in use.";
 			}
 		}
@@ -117,14 +110,13 @@
 		
 		// if there's no error, continue to signup
 		if( !$error ) {
-			$query = "INSERT INTO users(userFirstName,userLastName,userEmail,userPass) VALUES('$fname','$lname','$email','$password')";
+			$query = "INSERT INTO users(userName,userEmail,userPass) VALUES('$username','$email','$password')";
 			$res = mysqli_query($conn, $query);
 				
 			if ($res) {
 				$errTyp = "success";
 				$errMSG = "Successfully registered, you may login now";
-				unset($fname);
-				unset($lname);
+				unset($username);
 				unset($email);
 				unset($pass);
 			} else {
@@ -139,36 +131,32 @@
 //###########################################################
 //#################### LOGIN ERRORS #########################
 //###########################################################
-	$logEmailError = "Email";
+	$logUserError = "Username or Email";
 	$logPassError = "Password";
 	$logError = false;
 	$adminLogin = false;
 	if( isset($_POST['btn-login']) ) {
 		
 		// prevent sql injections/ clear user invalid inputs
-		$logEmail = trim($_POST['logEmail']);
-		$logEmail = strip_tags($logEmail);
-		$logEmail = htmlspecialchars($logEmail);
+		$logUser = trim($_POST['logUser']);
+		$logUser = strip_tags($logUser);
+		$logUser = htmlspecialchars($logUser);
 		
 		$logPass = trim($_POST['logPass']);
 		$logPass = strip_tags($logPass);
 		$logPass = htmlspecialchars($logPass);
 		// prevent sql injections / clear user invalid inputs
 		
-		if(empty($logEmail)){
+		if(empty($logUser)){
 			$logError = true;
-			$logEmailError = "Please enter your email address.";
-		} else if ( !filter_var($logEmail,FILTER_VALIDATE_EMAIL) ) {
+			$logUserError = "Please enter your credentials.";
+		}
+		/*
+		else if ( !filter_var($logUser,FILTER_VALIDATE_EMAIL) ) {
 			$logError = true;
-			$logEmailError = "Please enter valid email address.";
+			$logUserError = "Please enter valid credentials.";
 		}
-		
-		if($logEmail == "admin@admin.com"){
-		  $adminLogin = true;
-		}
-		else{
-		  $adminLogin = false;
-		}
+		*/
 		if(empty($logPass)){
 			$logError = true;
 			$logPassError = "Please enter your password.";
@@ -179,27 +167,20 @@
 			
 			$password = hash('sha256', $logPass); // password hashing using SHA256
 		  
-			$res=mysqli_query($conn, "SELECT userId, userFirstName, userPass FROM users WHERE userEmail='$logEmail'");
+			$res=mysqli_query($conn, "SELECT userId, userName, userPass FROM users WHERE (userName='$logUser') OR (userEmail='$logUser')");
 			$row=mysqli_fetch_array($res);
 			$count = mysqli_num_rows($res); // if uname/pass correct it returns must be 1 row
 			
-			if($adminLogin == false){
-  			if( $count == 1 && $row['userPass']==$password ) {
-  				$_SESSION['user'] = $row['userId'];
-  				header("Location: home.php");
-  			} else {
-  				$logErrMSG = "Incorrect Credentials, Please try again...";
-  			}
+
+			if( $count == 1 && $row['userPass']==$password ) {
+				$_SESSION['user'] = $row['userId'];
+				header("Location: home.php");
+			} else {
+			  unset($logUser);
+			  unset($logPass);
+				$logErrMSG = "Incorrect Credentials, Please try again...";
 			}
-			else{
-  			if( $count == 1 && $row['userPass']==$password ) {
-  				$_SESSION['user'] = $row['userId'];
-  				header("Location: homeadmin.php");
-  			} else {
-  				$logErrMSG = "Incorrect Credentials, Please try again...";
-  			}
-			}
-				
+			
 		}
 		
 	}
@@ -213,7 +194,7 @@
 <head>
 
 <title>Hangman</title>
-
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link href="css/form.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/master.css" rel="stylesheet" type="text/css" media="all" />
 
@@ -277,8 +258,7 @@ function()
 	<div class = "signSloganContainer">
 		Hangman
 		<br>
-		<br>
-		<div style = "font-size: 18px;">The world's first sadistic word game.</div>
+		<div style = "font-size: 18px;">A sadistic approach to linguistics.</div>
 	</div>
 	<div class="signNavContainer">
 	  <ul>
@@ -297,17 +277,15 @@ function()
 		<div id = "signupForm" style = "display: none;">
 			<form name = "signupForm" method="post" action="index.php#signupForm" autocomplete="off">
 				
-				<input type="text" id="fname" name="firstname" placeholder="<?php echo $fnameError; ?>" maxlength="50" value="<?php echo $fname ?>" />  <!--<div class="glyphicon glyphicon-exclamation-sign"></div> -->
-				<input type="text" id="lname" name="lastname" placeholder="<?php echo $lnameError; ?>" maxlength="50" value="<?php echo $lname ?>" />
+				<input type="text" id="username" name="username" placeholder="<?php echo $userError; ?>" maxlength="50" value="<?php echo $username ?>" />
 				<input type="text" id="email" name="email" placeholder="<?php echo $emailError; ?>" maxlength="40"  value="<?php echo $email ?>"/>
 				<input type="password" id="pword" name="pass" placeholder="<?php echo $passError; ?>" maxlength="35" />
 				<input type="password" id="pword2" name="pass2" placeholder="<?php echo $passError2; ?>" maxlength="35" />
+				<div style = "margin-top: 25px"></div>
 				<?php
 				if ( isset($errMSG) ) {
 					
 					?>
-					<br>
-					<br>
 					<span class="text-danger"></span> <?php echo $errMSG; ?>
 					<?php
 				}
@@ -321,16 +299,14 @@ function()
 		<div id = "loginForm" style = "display: none;">
 			<!--####################### LOG IN FORM   #######################-->
 			<form name = "loginForm" method="post" action="index.php#loginForm" autocomplete="off">
-				<input type="text" name="logEmail" placeholder="<?php echo $logEmailError; ?>" value="<?php echo $logEmail ?>" maxlength="40" />
+				<input type="text" name="logUser" placeholder="<?php echo $logUserError; ?>" value="<?php echo $logUser ?>" maxlength="40" />
 				<input type="password" name="logPass" placeholder="<?php echo $logPassError; ?>" maxlength="15" />
-					<br>
-					<br>
+				<div style = "margin-top: 25px"></div>
 				<?php
 				if ( isset($logErrMSG) ) {
 					
 					?>
-
-					<span class="text-danger"><?php echo $logErrMSG; ?></span>
+					<span class="text-danger""><?php echo $logErrMSG; ?></span>
 	  
 					<?php
 				}

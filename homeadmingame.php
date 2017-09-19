@@ -55,31 +55,34 @@
     
     <!-- <p id="show-score">0</p> -->
     <p class="image-background">
-    <img src="uploads/hangman1.png" id="scene" style="width:100%;"/>
+    <img src="uploads/hangman1.png" id="scene"/>
     </p>
 
     <br>
 
-    <p>Already guessed letters: <span id="already-guessed"></span></p>
-
-    <p id="lives">Number of lives: <span id="num-lives"></span></p>
-
-    <div id="guess-input">
-        Enter guess:
-
-        <input id="user-guess" name="guess" type="text" value="" onkeydown="enterKeyChange()" autofocus>
-
-        <input id="submit-btn" type="submit" onclick="enterGuess()">
-
+    <div class = "input-controls">
+      <p>Already guessed letters: <span id="already-guessed"></span></p>
+  
+      <p id="lives">Number of lives: <span id="num-lives"></span></p>
+  
+      <div id="guess-input">
+          Enter guess:
+  
+          <input id="user-guess" name="guess" type="text" value="" onkeydown="enterKeyChange()" autofocus>
+  
+          <input id="submit-btn" type="submit" onclick="enterGuess()">
+  
+      </div>
+  
+      <p id="input-error"></p>
+  
+      <p id="show-word"></p>
+  
+      <h3 id="win-lose"></h3>
+      
+      <div id="reset"><button id="reset-btn" onclick="window.location.reload()">New Game</button></div>
     </div>
-
-    <p id="input-error"></p>
-
-    <p id="show-word"></p>
-
-    <h3 id="win-lose"></h3>
     
-    <div id="reset"><button id="reset-btn" onclick="window.location.reload()">New Game</button></div>
     <script src="app.js" type="text/javascript"></script>
 
   </div>

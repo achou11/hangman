@@ -6,7 +6,12 @@ p.image-background{
 p{
   font-size: 17px;
 }
-
+.input-controls{
+  width: 80%;
+  text-align: left;
+  margin-left: auto;
+  margin-right:auto;
+}
 #show-word {
   font-size: 50px;
   font-weight: bold;
@@ -36,6 +41,5 @@ p{
 }
 
 #scene {
-  height: 150;
-  width: 300px;
+  width:80%;
 }

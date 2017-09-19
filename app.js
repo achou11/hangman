@@ -1,4 +1,4 @@
-readTextFile("uploads/test.txt");
+readTextFile("uploads/dictionary.txt");
 
 
 var words;
@@ -87,7 +87,7 @@ function showInputMessage(message) {
 
 // Add 1 to score if user wins
 function changeScore(status) {
-    var scoreTag = document.getElementById("show-score");
+    //var scoreTag = document.getElementById("show-score");
     var scoreValue = parseInt(scoreTag.innerHTML);
 
     if (status) {

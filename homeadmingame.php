@@ -2,51 +2,46 @@
 	ob_start();
 	session_start();
 	require_once 'dbconnect.php';
-	
+  	
 	// if session is not set this will redirect to login page
 	if( !isset($_SESSION['user']) ) {
 		header("Location: index.php");
 		exit;
 	}
 
-
 	// select loggedin users detail
 	$res=mysqli_query($conn, "SELECT * FROM users WHERE userId=".$_SESSION['user']);
 	$userRow=mysqli_fetch_array($res);
 	$userAdmin = $userRow['userAdmin'];
 	
-	if($userAdmin == 1){
+	if($userAdmin != 1){
 	
-	  header("Location: homeadmin.php");
+	  header("Location: home.php");
 	  exit;
 	}
-		
+	
+
+	
 	$leadersQuery = mysqli_query($conn, "SELECT userId, userName, userPoints FROM users WHERE userAdmin NOT IN (SELECT userAdmin FROM users WHERE userAdmin = 1) ORDER BY userPoints DESC LIMIT 10");
-//	$leadersRow=mysqli_fetch_array($leadersQuery);
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<title>Welcome <?php echo $userRow['userEmail']; ?>!</title>
+<title>Administrator</title>
 <link rel="stylesheet" href="css/master.css" type="text/css"  />
-<script>
-  function updateUserScore(value) {
-    var request = new XMLHttpRequest();
-    var user_id = "<?php echo $userRow['userId']; ?>";
-    request.open("POST", "updateScore.php?q="+value+"&id="+user_id);
-    console.log("Request sent!");
-    request.send();
-}
-</script>
 </head>
-
 
 <body>
   <div class = "menu">
-    
+    <div class = "home-block">
+      <div class = "home-text"><a href = "homeadmin.php">Admin Page</a></div>
+    </div>
     <div class = "logout-block">
         <div class = "logout-text"><a href="logout.php?logout">Sign Out</a></div>
     </div>
@@ -54,10 +49,6 @@
     <div class = "user-block">
       <div class = "user-text">Welcome <?php echo ucfirst(strtolower($userRow['userName'])); ?>!</div>
     </div>
-      
-
-
-
   </div>
 
   <div class = "game">
@@ -120,6 +111,7 @@
     </table>
 
   </div>
+
 </body>
 </html>
 

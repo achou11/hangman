@@ -3,6 +3,10 @@ p.image-background{
   /*background-image: url("../uploads/background.jpg"), url("../uploads/background.png");*/
 }
 
+p{
+  font-size: 17px;
+}
+
 #show-word {
   font-size: 50px;
   font-weight: bold;

@@ -2,8 +2,7 @@ readTextFile("uploads/test.txt");
 
 
 var words;
-function readTextFile(file)
-{
+function readTextFile(file) {
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
     rawFile.onreadystatechange = function ()
@@ -31,7 +30,6 @@ words = words.map(v => v.toLowerCase());
 // Create scene variables to update the graphics
 var sceneNumInt = 1;
 var sceneNumStr = 'scene' + sceneNumInt;
-
 
 
 // Set number of lives for user
@@ -62,8 +60,6 @@ showWord.innerHTML = blankWord.join(' ');
 // Keep track of letters already guessed by user
 var alreadyGuessed = document.getElementById('already-guessed');
 var alreadyGuessedArray = [];
-
-
 
 
 // If enter key is pressed, submit guess;
@@ -158,14 +154,14 @@ function enterGuess() {
         // decrease number of lives by 1
         lives--;
         livesTag.innerHTML = lives;
-        
+
         // Update the canvas
         // When sceneNumInt exceeds 10, the player has lost
         sceneNumInt += 1;
         sceneNumStr = 'hangman' + sceneNumInt;
         newSource = "uploads/" + sceneNumStr + ".png";
         document.getElementById('scene').src = newSource;
-        
+
         console.log('Lives remaining: ' + lives);
         console.log('Incorrect guess. Try again!');  // if guess is incorrect
     }
@@ -175,14 +171,12 @@ function enterGuess() {
         document.getElementById('win-lose').innerHTML = 'Congrats. You won!';
         var newScoreWin = changeScore(true);
         updateUserScore(newScoreWin);
-
     }
+
     // User runs out of lives
     if (lives == 0) {
-        document.getElementById('win-lose').innerHTML = 'Game over. You lost';
+        document.getElementById('win-lose').innerHTML = 'Game over. You lost.<br/>But at least you got away :)';
         var newScoreLose = changeScore(false);
         updateUserScore(newScoreLose);
     }
-
 }
-

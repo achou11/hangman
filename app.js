@@ -86,21 +86,17 @@ function showInputMessage(message) {
 }
 
 // Add 1 to score if user wins
+// Subtract 1 if user loses
 function changeScore(status) {
-    //var scoreTag = document.getElementById("show-score");
-    var scoreValue = parseInt(scoreTag.innerHTML);
-
     if (status) {
-        scoreValue++;
+        var scoreValue = 1;
     } else {
-        scoreValue--;
+        var scoreValue = -1;
     }
 
-    scoreTag.innerHTML = scoreValue;
-    //console.log(typeof(scoreValue));
+    console.log(scoreValue);
     return scoreValue.toString();
 }
-
 
 
 // Where the game play happens after user guesses

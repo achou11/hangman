@@ -1,5 +1,26 @@
+// Read local text file
+function readTextFile(file) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                alert(allText)
+            }
+        }
+    }
+    rawFile.send(null);
+}
+
+var wordsTest = readTextFile('uploads/test.txt');
+console.log('wordsDict type is ' + typeof(wordsDict));
+
 // List of words to choose randomly from
-var words = ['happy', 'sadness', 'madness', 'angry', 'tired', 'excited', 'hormonal'];
+//var words = ['happy', 'sadness', 'madness', 'angry', 'tired', 'excited', 'hormonal'];
 
 words = words.map(v => v.toLowerCase());
 
@@ -38,26 +59,6 @@ showWord.innerHTML = blankWord.join(' ');
 // Keep track of letters already guessed by user
 var alreadyGuessed = document.getElementById('already-guessed');
 var alreadyGuessedArray = [];
-
-function readTextFile(file)
-{
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                var allText = rawFile.responseText;
-                alert(allText);
-            }
-        }
-    }
-    rawFile.send(null);
-}
-
-readTextFile("uploads/test.txt");
 
 
 // If enter key is pressed, submit guess;
@@ -152,14 +153,14 @@ function enterGuess() {
         // decrease number of lives by 1
         lives--;
         livesTag.innerHTML = lives;
-        
+
         // Update the canvas
         // When sceneNumInt exceeds 10, the player has lost
         sceneNumInt += 1;
         sceneNumStr = 'hangman' + sceneNumInt;
         newSource = "uploads/" + sceneNumStr + ".png";
         document.getElementById('scene').src = newSource;
-        
+
         console.log('Lives remaining: ' + lives);
         console.log('Incorrect guess. Try again!');  // if guess is incorrect
     }
@@ -179,4 +180,3 @@ function enterGuess() {
     }
 
 }
-

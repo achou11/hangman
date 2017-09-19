@@ -39,6 +39,26 @@ showWord.innerHTML = blankWord.join(' ');
 var alreadyGuessed = document.getElementById('already-guessed');
 var alreadyGuessedArray = [];
 
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                alert(allText);
+            }
+        }
+    }
+    rawFile.send(null);
+}
+
+readTextFile("uploads/test.txt");
+
 
 // If enter key is pressed, submit guess;
 // if esc key is pressed, clear input
@@ -153,7 +173,7 @@ function enterGuess() {
     }
     // User runs out of lives
     if (lives == 0) {
-        document.getElementById('win-lose').innerHTML = 'Game over. You lost. But at least you got away :)';
+        document.getElementById('win-lose').innerHTML = 'Game over. You lost';
         var newScoreLose = changeScore(false);
         updateUserScore(newScoreLose);
     }

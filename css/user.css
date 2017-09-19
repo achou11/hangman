@@ -8,7 +8,7 @@
 }
 .leaderboard{
   float:right;
-  width: 40%;
+  width: 30%;
   margin: 50px;
   background: none;
 }
@@ -22,11 +22,12 @@
 
 .leaders th{
     text-align: left;
-    padding: 15px;
+    padding: 10px;
+    border-bottom: 3px solid white;
 }
 .leaders td{
     text-align: left;
-    padding: 15px;
+    padding: 10px;
 }
 
 .leaders tr{

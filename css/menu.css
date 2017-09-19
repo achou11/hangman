@@ -17,7 +17,11 @@
   float: right;
   margin:25px;
 }
-
+.home-block{
+  background: none;
+  float: left;
+  margin:25px;
+}
 .user-text{
   font-size: 18px;
   color:white;
@@ -25,6 +29,12 @@
 
 
 .logout-text {
+  text-align: center;
+  color: white;
+  font-size: 18px;
+
+}
+.home-text {
   text-align: center;
   color: white;
   font-size: 18px;

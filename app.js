@@ -116,7 +116,7 @@ function enterGuess() {
         showInputMessage('Please only guess one letter at a time');
         return;
     } else if (userGuess.length == 0) {
-        showInputMessage('You gotta type something in the damn box');
+        showInputMessage('You gotta type something in the box');
         return;
     } else if (!userGuess.match(/[a-z]/)) {
         showInputMessage('Letters only please');

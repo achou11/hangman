@@ -41,7 +41,9 @@
 
 <body>
   <div class = "menu">
-    
+    <div class = "home-block">
+      <div class = "home-text"><a href = "homeadmingame.php">Game Page</a></div>
+    </div>
     <div class = "logout-block">
         <div class = "logout-text"><a href="logout.php?logout">Sign Out</a></div>
     </div>

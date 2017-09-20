@@ -1,16 +1,18 @@
+
+
 .game{
-  float:left;
   position: relative;
-  width: 40%;
+  display:inline-block;
+  vertical-align: top;
+  width: 50%;
   margin: 50px;
-  background: none;
-  padding-left: 100px;
 }
 .leaderboard{
-  float:right;
+  position: relative;
   width: 30%;
+  display:inline-block;
+  vertical-align: top;
   margin: 50px;
-  background: none;
 }
 
 .leaders{

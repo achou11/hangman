@@ -17,6 +17,11 @@
   float: right;
   margin:25px;
 }
+.score-block{
+  background: none;
+  float: left;
+  margin:25px;
+}
 .home-block{
   background: none;
   float: left;
@@ -26,7 +31,12 @@
   font-size: 18px;
   color:white;
 }
+.score-text {
+  text-align: center;
+  color: white;
+  font-size: 18px;
 
+}
 
 .logout-text {
   text-align: center;

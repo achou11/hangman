@@ -40,6 +40,8 @@
     console.log("Request sent!");
     request.send();
 }
+
+
 </script>
 </head>
 
@@ -55,14 +57,17 @@
       <div class = "user-text">Welcome <?php echo ucfirst(strtolower($userRow['userName'])); ?>!</div>
     </div>
       
-
+    <div class = "score-block">
+      <div class = "score-text">Score: <?php echo $userRow['userPoints'] ?></div>
+    </div>
 
 
   </div>
 
+
   <div class = "game">
     
-    <!-- <p id="show-score">0</p> -->
+
     <p class="image-background">
     <img src="uploads/hangman1.png" id="scene"/>
     </p>

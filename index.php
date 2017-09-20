@@ -98,7 +98,7 @@
 			$passError = "Please enter password.";
 		} else if(strlen($pass) < 6) {
 			$error = true;
-			$passError = "Password needs at least 6 characters.";
+			$passError = "Enter at least 6 characters.";
 		}
 		
 		if ($pass != $pass2){
@@ -112,21 +112,27 @@
 		if( !$error ) {
 			$query = "INSERT INTO users(userName,userEmail,userPass) VALUES('$username','$email','$password')";
 			$res = mysqli_query($conn, $query);
-				
+			
+			
+			
 			if ($res) {
 				$errTyp = "success";
+
 				$errMSG = "Successfully registered, you may login now";
-				unset($username);
-				unset($email);
-				unset($pass);
+				
+  			$res=mysqli_query($conn, "SELECT userId, userName, userPass FROM users WHERE (userName='$username')");
+  			$row=mysqli_fetch_array($res);
+				$_SESSION['user'] = $row['userId'];
+				header("Location: home.php");
+
+				
+  			
 			} else {
 				$errTyp = "danger";
 				$errMSG = "Something went wrong, try again later...";
 			}
 				
 		}
-		
-		
 	}
 //###########################################################
 //#################### LOGIN ERRORS #########################
@@ -258,7 +264,7 @@ function()
 	<div class = "signSloganContainer">
 		Hangman
 		<br>
-		<div style = "font-size: 18px;">A sadistic approach to linguistics.</div>
+		<div style = "font-size: 18px;">A sadistic word game.</div>
 	</div>
 	<div class="signNavContainer">
 	  <ul>
@@ -294,6 +300,7 @@ function()
 				<input type="submit" name="btn-signup" value="Sign up">
 		
 			</form>
+      <div class = "guest-sign"><a href = "home.html">Play as guest</a></div>
 		</div>
 		
 		<div id = "loginForm" style = "display: none;">
@@ -315,10 +322,11 @@ function()
 			</form>
 		</div>
 	</div>
+
 </div>
 
+<div class = "footer">Created by: Jianing (Colin) Xie, Andrew Chou, Hayden Cowart, Zhihao Li, Yifan Gao, Ronghao Zhang</div>
 </body>
-
 </html>
 
 

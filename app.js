@@ -62,6 +62,7 @@ var alreadyGuessed = document.getElementById('already-guessed');
 var alreadyGuessedArray = [];
 
 
+
 // If enter key is pressed, submit guess;
 // if esc key is pressed, clear input
 function enterKeyChange() {
@@ -87,6 +88,7 @@ function showInputMessage(message) {
 
 // Add 1 to score if user wins
 // Subtract 1 if user loses
+
 function changeScore(status) {
     if (status) {
         var scoreValue = 1;
@@ -97,6 +99,7 @@ function changeScore(status) {
     console.log(scoreValue);
     return scoreValue.toString();
 }
+
 
 
 // Where the game play happens after user guesses

@@ -1,5 +1,10 @@
-readTextFile("uploads/dictionary.txt");
 
+
+$.ajax({
+    url:'uploads/upload.txt',
+    type:'HEAD',
+    error: readTextFile("uploads/dictionary.txt"), success: readTextFile("uploads/upload.txt")
+});
 
 var words;
 function readTextFile(file) {
@@ -91,9 +96,9 @@ function showInputMessage(message) {
 
 function changeScore(status) {
     if (status) {
-        var scoreValue = 1;
+        var scoreValue = lives*targetWord.length;
     } else {
-        var scoreValue = -1;
+        var scoreValue = 0;
     }
 
     console.log(scoreValue);
@@ -174,8 +179,7 @@ function enterGuess() {
 
     // User runs out of lives
     if (lives == 0) {
-        document.getElementById('win-lose').innerHTML =
-        'Game over. The correct answer was ' + targetWord '.<br>But hey, at least you got away :)';
+        document.getElementById('win-lose').innerHTML = 'Game over. You lost.<br/>But at least you got away :)';
         var newScoreLose = changeScore(false);
         updateUserScore(newScoreLose);
     }

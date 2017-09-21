@@ -174,7 +174,8 @@ function enterGuess() {
 
     // User runs out of lives
     if (lives == 0) {
-        document.getElementById('win-lose').innerHTML = 'Game over. You lost.<br/>But at least you got away :)';
+        document.getElementById('win-lose').innerHTML =
+        'Game over. The correct answer was ' + targetWord '.<br>But hey, at least you got away :)';
         var newScoreLose = changeScore(false);
         updateUserScore(newScoreLose);
     }

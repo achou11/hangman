@@ -178,15 +178,15 @@ if ( isset($_POST['btn-signup']) ) {
 
 ## Post-Login: Admin  
 
-#### Access to Users and Other Admins Information
+#### Access to Users and Other Admins Information 
 
-The admin page contains a list of registered users and relevant information about each user, such as their ID, username, email, and number of points. The admin can also remove users at their own discretion. 
+The admin page contains a list of registered users and relevant information about each user, such as their ID, username, email, and number of points. The admin can also remove users at their own discretion. [[see source](https://github.com/achou11/swEng-project0/blob/master/homeadmin.php)]
 
 The following code is written in a `.php` file and uses an html template to render the users list.
 
 <details>
 	<summary>
-	[homeadmin.php](https://github.com/achou11/swEng-project0/blob/master/homeadmin.php) (lines 55-94):
+	**`homeadmin.php (lines 55-94)`**:
 	</summary>
 
 ```php
@@ -237,7 +237,8 @@ The following code is written in a `.php` file and uses an html template to rend
 Admins can also see other admins and can see their ID, username, and email by similar means.
 
 <details>
-	<summary>[homeadmin.php](https://github.com/achou11/swEng-project0/blob/master/homeadmin.php) (lines 96-137): 
+	<summary>
+	**`homeadmin.php (lines 96-137)`**: 
 	</summary>
 	
 ```php
@@ -288,7 +289,7 @@ In order to see the correct information that corresponds to each type of user, t
 
 <details>
 	<summary>
-	[homeadmin.php](https://github.com/achou11/swEng-project0/blob/master/homeadmin.php) (lines 1-28):
+	**`homeadmin.php (lines 1-28)`**:
 	</summary>
 
 ```php
@@ -331,11 +332,11 @@ In order to see the correct information that corresponds to each type of user, t
 
 Admins have the privelage of uploading a text file containing words that the game can choose from. The file should be `\n` separated when uploaded. 
 
-The following code renders the upload feature for the admin page.
+The following code renders the upload feature for the admin page. [[see source](https://github.com/achou11/swEng-project0/blob/master/homeadmin.php)]
 
 <details>
 	<summary>
-	[homeadmin.php](https://github.com/achou11/swEng-project0/blob/master/homeadmin.php) (lines 138-144):
+	**`homeadmin.php (lines 138-144)`**:
 	</summary>
 
 ```php
@@ -349,11 +350,11 @@ The following code renders the upload feature for the admin page.
 ```  
 </details>
 
-After the `.txt	` file is uploaded, it is stored into a specific directory that the game references when randomly selecting a word.
+After the `.txt	` file is uploaded, it is stored into a specific directory that the game references when randomly selecting a word. [[see source](https://github.com/achou11/swEng-project0/blob/master/upload.php)]
 
 <details>
 	<summary>
-	[upload.php](https://github.com/achou11/swEng-project0/blob/master/upload.php):
+	**`upload.php`**:
 	</summary>
 	
 ```php

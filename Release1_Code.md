@@ -4,7 +4,7 @@
 
 <details>
 
-<summary>**hello.js**</summary>
+<summary>hello.js</summary>
 
 ```javascript
 var example = "Hello World!"
@@ -186,7 +186,7 @@ The following code is written in a `.php` file and uses an html template to rend
 
 <details>
 	<summary>
-	**`homeadmin.php (lines 55-94)`**:
+	homeadmin.php (lines 55-94):
 	</summary>
 
 ```php
@@ -238,7 +238,7 @@ Admins can also see other admins and can see their ID, username, and email by si
 
 <details>
 	<summary>
-	**`homeadmin.php (lines 96-137)`**: 
+	homeadmin.php (lines 96-137): 
 	</summary>
 	
 ```php
@@ -289,7 +289,7 @@ In order to see the correct information that corresponds to each type of user, t
 
 <details>
 	<summary>
-	**`homeadmin.php (lines 1-28)`**:
+	homeadmin.php (lines 1-28):
 	</summary>
 
 ```php
@@ -336,7 +336,7 @@ The following code renders the upload feature for the admin page. [[see source](
 
 <details>
 	<summary>
-	**`homeadmin.php (lines 138-144)`**:
+	homeadmin.php (lines 138-144):
 	</summary>
 
 ```php
@@ -354,7 +354,7 @@ After the `.txt	` file is uploaded, it is stored into a specific directory that 
 
 <details>
 	<summary>
-	**`upload.php`**:
+	upload.php:
 	</summary>
 	
 ```php

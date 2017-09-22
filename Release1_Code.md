@@ -1,6 +1,6 @@
 # **User Stories for First Release**
 
-**NOTE**: Code blocks will have an arrow next to them to indicate that they are collapsable. Click on the arrow or any space along the same line to toggle the code blocks. Try out this example: 
+**NOTE**: Code blocks will have an arrow next to them to indicate that they are collapsible. Click on the arrow or any space along the same line to toggle the code blocks. Try out this example: 
 
 <details>
 
@@ -9,7 +9,6 @@
 ```javascript
 var example = "Hello World!"
 ```
-
 </details>
 
 <br>

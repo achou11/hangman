@@ -43,16 +43,15 @@ livesTag.innerHTML = lives;
 
 // Randomly select a word for user to guess from generated array
 var targetWord = words[ Math.floor(Math.random() * words.length) ];
-console.log('Target word: ' + targetWord);
+
 
 var targetWordList = targetWord.split('');
-console.log('Target word list: ' + targetWordList);
+
 
 
 // Create array of list of same length as target word, filled with underscores
 // to portray to user; will be filled as user correctly guesses letters
 var blankWord = Array.apply(null, Array(targetWord.length)).map(String.prototype.valueOf,'_');
-console.log('Blank word: ' + blankWord);
 
 
 // Show updated word to user as letters are guessed
@@ -131,12 +130,10 @@ function enterGuess() {
     alreadyGuessedArray.push(userGuess);
     alreadyGuessed.innerHTML = alreadyGuessedArray.join(' ');
 
-    console.log('Guess is ' + userGuess);
 
     // Create array containing indices of where guess occurs in letter if it's correct
     var indexArray = [];
     if (targetWordList.includes(userGuess)) {
-        console.log('Already guessed letters: ' + alreadyGuessedArray);
 
         targetWordList.forEach(function(element, index) {
             if (element === userGuess) {
@@ -149,7 +146,6 @@ function enterGuess() {
             blankWord.splice(idx, 1, targetWordList[idx]);
         });
 
-        console.log('updated target is ' + blankWord);
 
         showWord.innerHTML = blankWord.join(' ');
     } else if (targetWordList.includes(userGuess) === false) {
@@ -164,8 +160,6 @@ function enterGuess() {
         newSource = "uploads/" + sceneNumStr + ".png";
         document.getElementById('scene').src = newSource;
 
-        console.log('Lives remaining: ' + lives);
-        console.log('Incorrect guess. Try again!');  // if guess is incorrect
     }
 
     // User correctly guesses all letters in word

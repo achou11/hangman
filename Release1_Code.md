@@ -20,13 +20,12 @@ var example = "Hello World!"
 #### User Registration  
 
   
-User registration was implemented in `index.php`. Within this file, there is embedded html that serves as a template to render the user signup page. 
-
-
+User registration was implemented in `index.php`. Within this file, there is embedded html that serves as a template to render the user signup page. [[see source](https://github.com/achou11/swEng-project0/blob/master/index.php)]
 	
+
 <details>
 	<summary>
-	[index.php](https://github.com/achou11/swEng-project0/blob/master/index.php) (lines 283-304):
+	index.php (lines 283-304)
 	</summary>
 
 ```html
@@ -55,11 +54,13 @@ User registration was implemented in `index.php`. Within this file, there is emb
 ```  
 </details>
 
-The following `.php` code takes validates the user signup credentials.
+<br> 
+
+It also validates the user signup credentials before entering it into the database.
 
 <details>
 	<summary>
-	[index.php](https://github.com/achou11/swEng-project0/blob/master/index.php) (lines 22-136):  
+	index.php (lines 22-136) 
 	</summary>
 
 ```php
@@ -186,7 +187,7 @@ The following code is written in a `.php` file and uses an html template to rend
 
 <details>
 	<summary>
-	homeadmin.php (lines 55-94):
+	homeadmin.php (lines 55-94)
 	</summary>
 
 ```php
@@ -234,11 +235,13 @@ The following code is written in a `.php` file and uses an html template to rend
 ```
 </details>
 
+<br>
+
 Admins can also see other admins and can see their ID, username, and email by similar means.
 
 <details>
 	<summary>
-	homeadmin.php (lines 96-137): 
+	homeadmin.php (lines 96-137)
 	</summary>
 	
 ```php
@@ -285,11 +288,13 @@ Admins can also see other admins and can see their ID, username, and email by si
 ```
 </details>
 
+<br>
+
 In order to see the correct information that corresponds to each type of user, the database is queried.
 
 <details>
 	<summary>
-	homeadmin.php (lines 1-28):
+	homeadmin.php (lines 1-28)
 	</summary>
 
 ```php
@@ -322,8 +327,6 @@ In order to see the correct information that corresponds to each type of user, t
 	//$usersRow=mysqli_fetch_array($usersQuery);
 ?>
 ```
-
-
 </details>
 
 <br>
@@ -336,7 +339,7 @@ The following code renders the upload feature for the admin page. [[see source](
 
 <details>
 	<summary>
-	homeadmin.php (lines 138-144):
+	homeadmin.php (lines 138-144)
 	</summary>
 
 ```php
@@ -350,11 +353,13 @@ The following code renders the upload feature for the admin page. [[see source](
 ```  
 </details>
 
+<br>
+
 After the `.txt	` file is uploaded, it is stored into a specific directory that the game references when randomly selecting a word. [[see source](https://github.com/achou11/swEng-project0/blob/master/upload.php)]
 
 <details>
 	<summary>
-	upload.php:
+	upload.php
 	</summary>
 	
 ```php

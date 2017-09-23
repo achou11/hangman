@@ -97,6 +97,8 @@ else
 ```
 </details>
 
+<br>
+
 <details>
 	<summary>deleteMember.php</summary>
 	
@@ -117,6 +119,8 @@ else
 ?>
 ```
 </details>
+
+<br>
 
 <details>
 	<summary>demoteMember.php</summary>

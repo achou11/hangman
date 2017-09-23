@@ -156,7 +156,7 @@ From the admin page, admins can also play the game via a link to `homeadmingame.
 
 #### Uploading the Logo
 
-Admins can upload an image file (`.png`, `.jpg`) that is displayed in the page rendered by `index.php`. This is implemented in `homeadmin.php` (lines 138-144).
+Admins can upload a `.png` file that is displayed in the page rendered by `index.php`. This is implemented in `homeadmin.php` (lines 138-144) and `upload.php` [[see source](https://github.com/achou11/swEng-project0/blob/master/upload.php)].
 
 ```php
 <div class = "upload-image">

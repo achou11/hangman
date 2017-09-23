@@ -52,6 +52,8 @@ $headAdminPromote="-";
 ```
 </details>
 
+<br>
+
 <details>
 	<summary>promoteMember.php</summary>
 

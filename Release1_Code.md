@@ -197,6 +197,7 @@ Registered users can login via a form. [[see source](https://github.com/achou11/
 	</form>
 </div>
 ```
+</details>
 
 <br>
 

@@ -321,7 +321,7 @@ In order to see the correct information that corresponds to each type of user, t
 
 #### Uploading Text Files  
 
-Admins have the privelage of uploading a text file containing words that the game can choose from. The file should be newline-separated (`\n`) when uploaded. 
+Admins have the privilege of uploading a text file containing words that the game can choose from. The file should be newline-separated (`\n`) when uploaded. 
 
 The following code renders the upload feature for the admin page. [[see source](https://github.com/achou11/swEng-project0/blob/master/homeadmin.php)]
 

@@ -170,6 +170,36 @@ if ( isset($_POST['btn-signup']) ) {
 
 <br>
 
+#### Login Interface
+
+Registered users can login via a form. [[see source](https://github.com/achou11/swEng-project0/blob/master/index.php)]
+
+<details>
+	<summary>index.php (lines 306-323)</summary>
+	
+```php
+<div id = "loginForm" style = "display: none;">
+	<!--####################### LOG IN FORM   #######################-->
+	<form name = "loginForm" method="post" action="index.php#loginForm" autocomplete="off">
+		<input type="text" name="logUser" placeholder="<?php echo $logUserError; ?>" value="<?php echo $logUser ?>" maxlength="40" />
+		<input type="password" name="logPass" placeholder="<?php echo $logPassError; ?>" maxlength="15" />
+		<div style = "margin-top: 25px"></div>
+		<?php
+		if ( isset($logErrMSG) ) {
+			
+			?>
+			<span class="text-danger""><?php echo $logErrMSG; ?></span>
+  
+			<?php
+		}
+		?>
+		<input type="submit" name="btn-login" id="btn-login" value="Log in" />
+	</form>
+</div>
+```
+
+<br>
+
 
 ## Post-Login: Admin  
 

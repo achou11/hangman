@@ -251,7 +251,7 @@ function()
 
 
 </script>
-<body>
+<body  style = "background-image: url('uploads/background.png'); background-size:cover; background-position: left top; background-repeat: no-repeat;">
 
 
 <div class = "signContainer">

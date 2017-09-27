@@ -42,9 +42,7 @@ livesTag.innerHTML = lives;
 
 
 // Randomly select a word for user to guess from generated array
-//var targetWord = words[ Math.floor(Math.random() * words.length) ];
-
-var targetWord = 'New York'
+var targetWord = words[ Math.floor(Math.random() * words.length) ];
 
 var targetWordList = targetWord.split('');
 

@@ -42,16 +42,25 @@ livesTag.innerHTML = lives;
 
 
 // Randomly select a word for user to guess from generated array
-var targetWord = words[ Math.floor(Math.random() * words.length) ];
+//var targetWord = words[ Math.floor(Math.random() * words.length) ];
 
+var targetWord = 'New York'
 
 var targetWordList = targetWord.split('');
+
+var blankWord = targetWordList.map(function (el) {
+  if (el === ' ') {
+    return el;
+  } else {
+    return '_';
+  }
+});
 
 
 
 // Create array of list of same length as target word, filled with underscores
 // to portray to user; will be filled as user correctly guesses letters
-var blankWord = Array.apply(null, Array(targetWord.length)).map(String.prototype.valueOf,'_');
+// var blankWord = Array.apply(null, Array(targetWord.length)).map(String.prototype.valueOf,'_');
 
 
 // Show updated word to user as letters are guessed

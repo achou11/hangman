@@ -37,6 +37,23 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <title>Administrator</title>
 <link rel="stylesheet" href="css/master.css" type="text/css"  />
+
+  <script>
+
+    function promptScore(id) {
+    var request = new XMLHttpRequest();
+    var value = prompt("Please enter new score:")
+    request.open("POST", "saveScore.php?q="+value+"&id="+id);
+    request.send();
+    }
+    
+    function promptUsername(id) {
+    var request = new XMLHttpRequest();
+    var value = prompt("Please enter new username:")
+    request.open("POST", "saveUsername.php?q="+value+"&id="+id);
+    request.send();
+    }
+</script>
 </head>
 
 <body>
@@ -81,9 +98,9 @@
               echo
                   "<tr>
                   <td>" .$usersRow["userId"]. "</td>
-                  <td>" .$usersRow["userName"]. "</td>
+                  <td><a onclick='promptUsername(".$usersRow['userId'].");'>" .$usersRow["userName"]. "</a></td>
                   <td>" .$usersRow["userEmail"]. "</td>
-                  <td>" .$usersRow["userPoints"]. "</td>
+                  <td><a onclick='promptScore(".$usersRow['userId'].");'>" .$usersRow["userPoints"]. "</a></td>
                   <td>" ."<a href='deleteMember.php?id=".$usersRow['userId']."' onclick = \"return confirm('Are you sure you want to delete?')\">Delete</a>" . "</td>
                   <td>" .$headAdminPromote. "</td>
                   </tr>";
@@ -91,6 +108,8 @@
         ?>
       </table>
     </div>
+    
+
   </div>
   
   <div class = "admins">
@@ -135,11 +154,21 @@
       ?>
     </table>
   </div>
-  <div class = "upload-image">
+  <div class = "upload">
     <form action="upload.php" method="post" enctype="multipart/form-data">
-      Select file to upload (only JPG, JPEG, PNG & GIF, and txt files are allowed):
+      Select file to upload <br>
+      (only JPG, JPEG, PNG & GIF, and txt files are allowed):
+      <br>
+      <br>
+      upload.txt = word list<br>
+      dictionary.txt = default word list<br>
+      background.png = background image for index<br>
+      <br>
+      
       <input type="file" name="fileToUpload" id="fileToUpload">
-      <input type="submit" value="Upload File" name="submit">
+      <br>
+      <br>
+      <input id = "submitFile" type="submit" value="Upload File" name="submit">
     </form>
   </div>
 

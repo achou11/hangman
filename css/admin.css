@@ -52,6 +52,9 @@
     margin: 15px;
 }
 
+.userlog td a{
+  cursor:pointer;
+}
 .userlog tr{
   line-height: 15px;
 }
@@ -78,9 +81,29 @@
     color: white;
 }
 
-.upload-image{
+.upload{
   display: block;
   width: 40%;
+  font-size: 18px;
   margin: 50px;
   background: none;
+}
+
+#fileToUpload{
+  font-size: 18px;
+  background: none;
+  color:white;
+}
+
+#submitFile{
+  font-size: 18px;
+  padding: 15px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background: none;
+  color:white;
+}
+#submitFile:hover{
+  background: white;
+  color: black !important;
 }

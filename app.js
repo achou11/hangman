@@ -63,7 +63,7 @@ var blankWord = targetWordList.map(function (el) {
 
 // Show updated word to user as letters are guessed
 var showWord = document.getElementById('show-word');
-showWord.innerHTML = blankWord.join(' ');
+showWord.innerHTML = '<pre>' + blankWord.join(' ') + '</pre>';
 
 
 // Keep track of letters already guessed by user
@@ -154,7 +154,7 @@ function enterGuess() {
         });
 
 
-        showWord.innerHTML = blankWord.join(' ');
+        showWord.innerHTML = '<pre>' + blankWord.join(' ') + '</pre>';
     } else if (targetWordList.includes(userGuess) === false) {
         // decrease number of lives by 1
         lives--;

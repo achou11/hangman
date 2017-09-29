@@ -55,7 +55,6 @@ var blankWord = targetWordList.map(function (el) {
 });
 
 
-
 // Create array of list of same length as target word, filled with underscores
 // to portray to user; will be filled as user correctly guesses letters
 // var blankWord = Array.apply(null, Array(targetWord.length)).map(String.prototype.valueOf,'_');
@@ -63,7 +62,7 @@ var blankWord = targetWordList.map(function (el) {
 
 // Show updated word to user as letters are guessed
 var showWord = document.getElementById('show-word');
-showWord.innerHTML = '<pre>' + blankWord.join(' ') + '</pre>';
+showWord.innerHTML = blankWord.join(' ').replace(/  /g, '&nbsp;');
 
 
 // Keep track of letters already guessed by user
@@ -154,7 +153,8 @@ function enterGuess() {
         });
 
 
-        showWord.innerHTML = '<pre>' + blankWord.join(' ') + '</pre>';
+        showWord.innerHTML = blankWord.join(' ').replace(/  /g, '&nbsp;');
+
     } else if (targetWordList.includes(userGuess) === false) {
         // decrease number of lives by 1
         lives--;

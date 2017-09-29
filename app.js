@@ -1,3 +1,4 @@
+// Make ajax call to choose random word from text file
 $.ajax({
     url:'uploads/upload.txt',
     type:'HEAD',
@@ -25,8 +26,6 @@ function readTextFile(file) {
 
 
 // List of words to choose randomly from
-//var words = ['happy', 'sadness', 'madness', 'angry', 'tired', 'excited', 'hormonal'];
-
 words = words.map(v => v.toLowerCase());
 
 
@@ -46,6 +45,8 @@ var targetWord = words[ Math.floor(Math.random() * words.length) ];
 
 var targetWordList = targetWord.split('');
 
+// Create array of list of same length as target word, filled with underscores
+// Create array of list of same length as target word, filled with underscores
 var blankWord = targetWordList.map(function (el) {
   if (el === ' ') {
     return el;
@@ -53,11 +54,6 @@ var blankWord = targetWordList.map(function (el) {
     return '_';
   }
 });
-
-
-// Create array of list of same length as target word, filled with underscores
-// to portray to user; will be filled as user correctly guesses letters
-// var blankWord = Array.apply(null, Array(targetWord.length)).map(String.prototype.valueOf,'_');
 
 
 // Show updated word to user as letters are guessed
@@ -68,7 +64,6 @@ showWord.innerHTML = blankWord.join(' ').replace(/  /g, '&nbsp;');
 // Keep track of letters already guessed by user
 var alreadyGuessed = document.getElementById('already-guessed');
 var alreadyGuessedArray = [];
-
 
 
 // If enter key is pressed, submit guess;
@@ -84,6 +79,7 @@ function enterKeyChange() {
 
 }
 
+
 // Show input error message
 function showInputMessage(message) {
     var inputError = document.getElementById('input-error');
@@ -94,9 +90,8 @@ function showInputMessage(message) {
     }
 }
 
-// Add 1 to score if user wins
-// Subtract 1 if user loses
 
+// Add to score if user wins
 function changeScore(status) {
     if (status) {
         var scoreValue = lives * targetWord.length;
@@ -107,7 +102,6 @@ function changeScore(status) {
     console.log(scoreValue);
     return scoreValue.toString();
 }
-
 
 
 // Where the game play happens after user guesses
@@ -152,7 +146,7 @@ function enterGuess() {
             blankWord.splice(idx, 1, targetWordList[idx]);
         });
 
-
+        // Redisplay word to player
         showWord.innerHTML = blankWord.join(' ').replace(/  /g, '&nbsp;');
 
     } else if (targetWordList.includes(userGuess) === false) {

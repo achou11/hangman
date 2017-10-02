@@ -13,6 +13,11 @@ html *
 {
    font-family: chalk !important;
    color: white !important;
-   background: #383838;
+   background: none;
 }
 
+body{
+    background-image: url('../uploads/background.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+}

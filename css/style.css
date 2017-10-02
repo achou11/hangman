@@ -1,22 +1,29 @@
-p.image-background{
-  background: none;
-  text-align: center;
-  /*background-image: url("../uploads/background.jpg"), url("../uploads/background.png");*/
-}
 
 p{
-  font-size: 20px;
+  font-size: 16px;
+}
+#scene {
+  width:100%;
 }
 .input-controls{
-  width: 60%;
+  
+  display:flex;
+  justify-content: space-around;
+  align-items:center;
+  
+}
+.output-controls{
+  margin-top: 25px;
+  float: left;
   text-align: left;
-  margin-left: auto;
-  margin-right:auto;
+  width: 100%;
+  clear: left;
 }
 #show-word {
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
   letter-spacing: .25px;
+  border: none;
 }
 
 #input-error {
@@ -24,20 +31,26 @@ p{
 }
 
 #submit-btn{
-  font-size: 20px;
-  padding: 15px;
+  font-size: 16px;
+  padding: 10px;
   border: 2px solid white;
   border-radius: 5px;
   background: none;
   color:white;
+}
+pre {
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: .25px;
+  border: none;
 }
 #submit-btn:hover{
   background: white;
   color: black !important;
 }
 #reset-btn{
-  font-size: 20px;
-  padding: 15px;
+  font-size: 16px;
+  padding: 10px;
   border: 2px solid white;
   border-radius: 5px;
   background: none;
@@ -58,18 +71,16 @@ p{
   margin: 0 10px 0 10px;
 }
 #guess-input{
-  font-size: 20px;
+  font-size: 16px;
 }
 #submit-btn {
   outline: none;
 }
 
 #win-lose {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
-#scene {
-  width:60%;
-}
+
 
 

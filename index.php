@@ -61,6 +61,7 @@
 		} else if (!preg_match("/^[a-zA-Z0-9 ]+$/",$username)) {
 			$error = true;
 			unset($username);
+			echo '<script type="text/javascript">','alert("No special characters.");','</script>';
 			$userError = "No special characters";
 		}	else {
 			// check email exist or not
@@ -70,6 +71,7 @@
 			if($count!=0){
 				$error = true;
 				unset($username);
+				echo '<script type="text/javascript">','alert("Username taken.");','</script>';
 				$userError = "Username taken";
 			}
 		}
@@ -79,7 +81,9 @@
 		//basic email validation
 		if ( !filter_var($email,FILTER_VALIDATE_EMAIL) ) {
 			$error = true;
-			$emailError = "Enter a valid email.";
+			unset($email);
+		  echo '<script type="text/javascript">','alert("Enter a valid email.");','</script>';
+			$emailError = "Enter a valid email";
 		}
 		else {
 			// check email exist or not
@@ -89,7 +93,8 @@
 			if($count!=0){
 				$error = true;
 				unset($email);
-				$emailError = "Provided Email is already in use.";
+				echo '<script type="text/javascript">','alert("Provided Email is already in use.");','</script>';
+				$emailError = "Provided Email is already in use";
 			}
 		}
 		// password validation
@@ -98,12 +103,17 @@
 			$passError = "Please enter password.";
 		} else if(strlen($pass) < 6) {
 			$error = true;
-			$passError = "Enter at least 6 characters.";
+			unset($pass);
+			echo '<script type="text/javascript">','alert("Enter at least 6 characters.");','</script>';
+			$passError = "Enter at least 6 characters";
 		}
 		
 		if ($pass != $pass2){
 			$error = true;
-			$passError2 = "Password does not match!";
+			unset($pass);
+			unset($pass2);
+			echo '<script type="text/javascript">','alert("Password does not match.");','</script>';
+			$passError2 = "Password does not match";
 		}
 		// password encrypt using SHA256();
 		$password = hash('sha256', $pass);
@@ -251,7 +261,7 @@ function()
 
 
 </script>
-<body  style = "background-image: url('uploads/background.png'); background-size:cover; background-position: left top; background-repeat: no-repeat;">
+<body>
 
 
 <div class = "signContainer">

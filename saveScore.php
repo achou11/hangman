@@ -7,7 +7,7 @@
   $value = (int)$_GET['q'];
   $sql = "UPDATE users SET userPoints = '".$value."' WHERE userId='".$_GET['id']."'";
   if ($conn->query($sql) === TRUE) {
-     header("Location: homeadmin.php");
+     header("Refresh:0");
   } else {
       echo "Error promoting record: " . $conn->error;
   }

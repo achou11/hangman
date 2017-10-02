@@ -42,16 +42,37 @@
 
     function promptScore(id) {
     var request = new XMLHttpRequest();
-    var value = prompt("Please enter new score:")
-    request.open("POST", "saveScore.php?q="+value+"&id="+id);
-    request.send();
+    var value = prompt("Please enter new score:");
+      if(value)
+      {
+        request.open("POST", "saveScore.php?q="+value+"&id="+id);
+        request.send();
+        location.reload();
+      }
     }
     
     function promptUsername(id) {
     var request = new XMLHttpRequest();
-    var value = prompt("Please enter new username:")
-    request.open("POST", "saveUsername.php?q="+value+"&id="+id);
-    request.send();
+    var value = prompt("Please enter new username:");
+      if(value)
+      {
+        request.open("POST", "saveUsername.php?q="+value+"&id="+id);
+        request.send();
+        location.reload();
+      }
+
+    }
+    
+    function promptPassword(id) {
+    var request = new XMLHttpRequest();
+    var value = prompt("Please enter temporary password:");
+      if(value)
+      {
+        request.open("POST", "savePassword.php?q="+value+"&id="+id);
+        request.send();
+        location.reload();
+      }
+
     }
 </script>
 </head>
@@ -78,6 +99,7 @@
           <th>Username</th>
           <th>Email</th>
           <th>Points</th>
+          <th>Password</th>
           <th>Remove User</th>
           <th>Promote User</th>
         </tr>
@@ -101,6 +123,7 @@
                   <td><a onclick='promptUsername(".$usersRow['userId'].");'>" .$usersRow["userName"]. "</a></td>
                   <td>" .$usersRow["userEmail"]. "</td>
                   <td><a onclick='promptScore(".$usersRow['userId'].");'>" .$usersRow["userPoints"]. "</a></td>
+                  <td><a onclick='promptPassword(".$usersRow['userId'].");'>Change</a></td>
                   <td>" ."<a href='deleteMember.php?id=".$usersRow['userId']."' onclick = \"return confirm('Are you sure you want to delete?')\">Delete</a>" . "</td>
                   <td>" .$headAdminPromote. "</td>
                   </tr>";
@@ -162,7 +185,7 @@
       <br>
       upload.txt = word list<br>
       dictionary.txt = default word list<br>
-      background.png = background image for index<br>
+      background.jpg = background image for everything<br>
       <br>
       
       <input type="file" name="fileToUpload" id="fileToUpload">
